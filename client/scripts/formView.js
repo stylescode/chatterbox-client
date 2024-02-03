@@ -14,9 +14,17 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
+    // invoke parse create ( $('#message').innerText, successCB() {
+      // invoke fetch with argument
+        // messagesView.render
+      // console.log(data);
+
+    // })
+
+
     // TODO: Currently, this is all handleSubmit does.
     // Make this function actually send a message to the Parse API.
-  
+
     console.log('click!');
   },
 

@@ -23,14 +23,19 @@ var App = {
     // continually, instead of just once at the start.
   },
 
+  // TODO: in fetch, use the data to update Messages and Rooms
+  // and re-render the corresponding views.
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
-
-      // TODO: Use the data to update Messages and Rooms
-      // and re-render the corresponding views.
-    });
+      // compare the size of current messages to retrieved
+        // loop over the difference
+        // invoke messages.add to each message in the difference
+      // apply map to data for roomnames, apply uniq to the map
+      // set room._data to result array
+      });
+    // invoke callback function
   },
 
   startSpinner: function() {

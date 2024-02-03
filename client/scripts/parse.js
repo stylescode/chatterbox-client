@@ -8,6 +8,15 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // TODO: send a request to the Parse API to save the message
+
+    // use jquery ajax
+      // url parse server
+      // type POST
+      // data message
+      // contentType app json
+      // success: successCB
+      // error: errorCB
+
   },
 
   readAll: function(successCB, errorCB = null) {
