@@ -5,23 +5,33 @@
 var Rooms = {
 
   // TODO: Define how you want to store the list of rooms
-  _data: null,
-  _selected: null
+  _data: [],
+  _selected: null,// change to reflect whatever is automatically
 
   // TODO: Define methods which allow you to add rooms, update the list, mark a room as selected, etc.
 
-  // .addRooms(array)
-    // Rooms._data = array
+  addRoom: function(roomname) {
+    App.fetch(() => {
+      Rooms.updateSelected(roomname);
+    });
+  },
 
-  // .updateSelected
-    // update _selected
-    // invoke render room
+  updateSelected: function(roomSelection) {
+    Rooms._selected = roomSelection;
+    RoomsView.renderRoom(roomSelection);
+  },
+
 
   // .createRoom
-    // invoke Parse.create() (message,
-      // successCB
-        // invoke RoomsView.renderRoom
-        // invokes .updateSelected
-      // errorCB)
+  createRoom: function(initialMessage, roomname) {
+    var newMessage = {};
+    newMessage.username = App.username;
+    newMessage.text = initialMessage;
+    newMessage.roomname = roomname;
+    Parse.create(newMessage, () => {
+      Rooms.addRoom(roomname);
+    });
+
+  },
 
 };

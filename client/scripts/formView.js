@@ -10,22 +10,36 @@ var FormView = {
     FormView.$form.on('submit', FormView.handleSubmit);
   },
 
+  // TODO: Currently, this is all handleSubmit does.
+  // Make this function actually send a message to the Parse API.
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
 
-    // invoke parse create ( $('#message').innerText, successCB() {
+    // var message = {
+    //   username: 'shawndrost', // App.username
+    //   text: 'trololo', // $('#message').innerText
+    //   roomname: '4chan',
+    // };
+
+    if ($('#message').val().length) {
+      var message = {};
+      message.username = App.username;
+      message.text = $('#message').val();
+      message.roomname = Rooms._selected;
+
+      // invoke parse create ( $('#message').innerText, successCB() {
       // invoke fetch with argument
+      Parse.create(message, () => {
         // messagesView.render
-      // console.log(data);
+        App.fetch(() => {
+          RoomsView.renderRoom(message.roomname);
+          $('#message').val('');
+        });
+        // console.log(data);
+      });
 
-    // })
-
-
-    // TODO: Currently, this is all handleSubmit does.
-    // Make this function actually send a message to the Parse API.
-
-    console.log('click!');
+    }
   },
 
   setStatus: function(active) {

@@ -10,12 +10,22 @@ var Parse = {
     // TODO: send a request to the Parse API to save the message
 
     // use jquery ajax
+    $.ajax({
       // url parse server
+      url: Parse.server,
       // type POST
+      type: 'POST',
       // data message
+      data: JSON.stringify(message),
       // contentType app json
+      contentType: 'application/json',
       // success: successCB
+      success: successCB,
       // error: errorCB
+      error: errorCB || function(error) {
+        console.error('chatterbox: Failed to post message', error);
+      }
+    });
 
   },
 

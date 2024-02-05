@@ -5,22 +5,31 @@
 var Messages = {
 
   // TODO: Define how you want to store your messages.
-  _data: null,
+
+  _data: [],
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
 
-  retrieve: function(roomname) {
+  retrieve: function(roomName) {
     // declare result var as empty array
+    var result = [];
     // iterate through _data
+    for (var element of Messages._data) {
       // if message.roomname matches roomname
-      // push to result array
-    // return result
+      if (element.roomname === roomName) {
+        result.push(element);
+      }
+    }
+    return result;
   },
 
   // add
   add: function(message) {
-    // message._data.push(message);
+    // Messages._data.unShift(message);
+    // console.log(message);
+    // console.log('message data:', Messages._data);
+    Messages._data.unshift(message);
   },
 
 };
